@@ -23,5 +23,16 @@ namespace NGramUnitTests
             Assert.AreEqual(12, IntNGram.Content);
             Assert.AreEqual(1, IntNGram.Count);
         }
+
+        [TestMethod, TestCategory("NGram Class")]
+        public void NGramConstructor_ListOfFloats()
+        {
+            EquatableList<float> ListOfFloats = new EquatableList<float>();
+            ListOfFloats.AddRange(new List<float>{ 10.3f, 16.1f, 12.1f});
+
+            NGram<EquatableList<float>> FloatListNGram = new NGram<EquatableList<float>>(ListOfFloats);
+            Assert.AreEqual(ListOfFloats, FloatListNGram.Content);
+            Assert.AreEqual(1, FloatListNGram.Count);
+        }
     }
 }
