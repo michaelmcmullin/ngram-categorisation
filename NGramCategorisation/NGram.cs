@@ -35,7 +35,7 @@ namespace NGramCategorisation
         /// <summary>
         /// The number of occurrences of this N-Gram
         /// </summary>
-        public int Count { get; private set; }
+        public int Count { get; set; }
         #endregion
 
         #region Operator Overrides
