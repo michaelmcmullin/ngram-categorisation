@@ -14,6 +14,7 @@ namespace NGramCategorisation.NGramSets
         #region Constructors
         public StringSet(string source)
         {
+            NGrams = new List<NGram<string>>();
             Parse(source);
         }
         #endregion
@@ -22,7 +23,7 @@ namespace NGramCategorisation.NGramSets
         /// <summary>
         /// An internal list of parsed N-Grams.
         /// </summary>
-        protected List<NGram<string>> ngrams = new List<NGram<string>>();
+        public List<NGram<string>> NGrams { get; private set; }
 
         /// <summary>
         /// Indicate whether or not processing should be case sensitive
@@ -102,18 +103,60 @@ namespace NGramCategorisation.NGramSets
 
             // Transfer dictionary values to main N-Grams list
             foreach (NGram<string> item in tmp.Values)
-                ngrams.Add(item);
+                NGrams.Add(item);
         }
         #endregion
 
-        public double GetDistance(string ngram, INGramSet<string> otherSet)
+        /// <summary>
+        /// Calculate the distance of a specific N-Gram value from its
+        /// occurrence within this set compared to a training set.
+        /// </summary>
+        /// <param name="ngram">The N-Gram value to test.</param>
+        /// <param name="trainingSet">A set of training data to compare ngram's
+        /// position to.</param>
+        /// <returns>A number indicating the distance between an N-Gram's
+        /// position within this set compared to a given training set. Lower
+        /// values suggest greater similarity between them. Values are always
+        /// positive.</returns>
+        public double GetDistance(string ngram, INGramSet<string> trainingSet)
         {
-            throw new NotImplementedException();
+            NGram<string> ng = new NGram<string>(ngram);
+
+            int thisIndex = this.NGrams.IndexOf(ng);
+            int trainingIndex = trainingSet.NGrams.IndexOf(ng);
+
+            // Keep the result below 1000, otherwise long passages of text
+            // could get out of hand.
+            double scale = 1000.0 / trainingSet.NGrams.Count;
+
+            if (thisIndex < 0 || trainingIndex < 0)
+            {
+                return trainingSet.NGrams.Count * scale;
+            }
+            else
+            {
+                return (Math.Abs(thisIndex - trainingIndex)) * scale;
+            }
         }
 
-        public double GetDistance(INGramSet<string> otherSet)
+        /// <summary>
+        /// Get the overall distance between a training set of data and a test
+        /// profile. The smaller the distance, the more similar they are.
+        /// </summary>
+        /// <param name="trainingSet">A set of training data to compare this set
+        /// instance to.</param>
+        /// <returns>A number representing the distance between two sets of
+        /// N-Grams. Lower values mean greater similarity.</returns>
+        public double GetDistance(INGramSet<string> trainingSet)
         {
-            throw new NotImplementedException();
+            double distance = 0;
+
+            for (int i = 0; i < this.NGrams.Count; i++)
+            {
+                distance += GetDistance(this.NGrams[i].Content, trainingSet);
+            }
+
+            return distance;
         }
 
         /// <summary>
@@ -129,6 +172,7 @@ namespace NGramCategorisation.NGramSets
             {
                 ParseMagnitude(Magnitudes[i]);
             }
+            NGrams.Sort();
         }
     }
 }

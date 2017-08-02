@@ -13,6 +13,11 @@ namespace NGramCategorisation
     public interface INGramSet<T> where T : IEquatable<T>
     {
         /// <summary>
+        /// An internal list of parsed N-Grams.
+        /// </summary>
+        List<NGram<T>> NGrams { get; }
+
+        /// <summary>
         /// Converts a source item into a set of NGram&lt;T&gt; objects.
         /// </summary>
         /// <param name="source">The source item to convert to N-Grams.</param>
