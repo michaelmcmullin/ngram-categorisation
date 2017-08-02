@@ -27,22 +27,19 @@ frequent.
 
 Check out the unit tests for a sample that identifies the language of some text:
 
-~~~~
-...
-StringSet englishTrainingParagraph = new StringSet(@"(a paragraph in English)");
-StringSet frenchTrainingParagraph = new StringSet(@"(a paragraph in French)");
-StringSet germanTrainingParagraph = new StringSet(@"(a paragraph in German)");
-...
-StringSet testLanguage = new StringSet(@"(some sample text in French)");
+    //...
+    StringSet englishTrainingParagraph = new StringSet(@"(a paragraph in English)");
+    StringSet frenchTrainingParagraph = new StringSet(@"(a paragraph in French)");
+    StringSet germanTrainingParagraph = new StringSet(@"(a paragraph in German)");
+    //...
+    StringSet testLanguage = new StringSet(@"(some sample text in French)");
 
-double distanceEnglish = testLanguage.GetDistance(englishTrainingParagraph);
-double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
-double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
-
-// Lower 'distances' indicate better matches. Therefore, if distanceFrench is
-// less than distanceEnglish and distanceGerman, then it has been correctly
-// identified as the best match.
-Assert.IsTrue(distanceFrench < distanceEnglish);
-Assert.IsTrue(distanceFrench < distanceGerman);
-
-~~~~
+    double distanceEnglish = testLanguage.GetDistance(englishTrainingParagraph);
+    double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
+    double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
+    
+    // Lower 'distances' indicate better matches. Therefore, if distanceFrench is
+    // less than distanceEnglish and distanceGerman, then it has been correctly
+    // identified as the best match.
+    Assert.IsTrue(distanceFrench < distanceEnglish);
+    Assert.IsTrue(distanceFrench < distanceGerman);
