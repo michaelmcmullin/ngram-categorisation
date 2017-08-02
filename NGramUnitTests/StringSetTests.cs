@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace NGramUnitTests
 {
+    // Attibution: Most of the text used in this set of unit tests is taken
+    // from Wikipedia in various languages.
+
     [TestClass]
     public class StringSetTests
     {
