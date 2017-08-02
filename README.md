@@ -27,6 +27,7 @@ frequent.
 
 Check out the unit tests for a sample that identifies the language of some text:
 
+```c#
     //...
     StringSet englishTrainingParagraph = new StringSet(@"(a paragraph in English)");
     StringSet frenchTrainingParagraph = new StringSet(@"(a paragraph in French)");
@@ -43,3 +44,4 @@ Check out the unit tests for a sample that identifies the language of some text:
     // identified as the best match.
     Assert.IsTrue(distanceFrench < distanceEnglish);
     Assert.IsTrue(distanceFrench < distanceGerman);
+```
