@@ -1,25 +1,22 @@
-ï»¿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NGramCategorisation;
 using NGramCategorisation.NGramSets;
 using System;
 using System.Collections.Generic;
+using Xunit;
 
-namespace NGramUnitTests
+namespace NGramXunitTests
 {
     // Attibution: Most of the text used in this set of unit tests is taken
     // from Wikipedia in various languages.
 
-    [TestClass]
     public class StringSetTests
     {
-        double Tolerance = 0.01;
         StringSet hello1, hello2, hello3;
         StringSet englishTrainingParagraph,
                   frenchTrainingParagraph,
                   germanTrainingParagraph;
 
-        [TestInitialize]
-        public void Initialize()
+        public StringSetTests()
         {
             hello1 = new StringSet("Hello, World!");
             hello2 = new StringSet("World, Hello!");
@@ -38,38 +35,38 @@ namespace NGramUnitTests
                         dealers.");
 
             frenchTrainingParagraph = new StringSet(@"Le Commodore 64 utilise un
-                        microprocesseur 8 bits 6510 (un dÃ©rivÃ© proche du 6502
-                        qui a la possibilitÃ© de gÃ©rer des banques de mÃ©moires en
-                        les amenant Ã  la demande dans l'espace d'adressage du
-                        processeur) et dispose de 64 kilooctets de mÃ©moire vive.
-                        Au Royaume-Uni, il a rivalisÃ© en popularitÃ© avec le ZX
-                        Spectrum et a tirÃ© bÃ©nÃ©fice d'un clavier de taille
-                        normale et de puces graphiques et son plus avancÃ©es.");
+                        microprocesseur 8 bits 6510 (un dérivé proche du 6502
+                        qui a la possibilité de gérer des banques de mémoires en
+                        les amenant à la demande dans l'espace d'adressage du
+                        processeur) et dispose de 64 kilooctets de mémoire vive.
+                        Au Royaume-Uni, il a rivalisé en popularité avec le ZX
+                        Spectrum et a tiré bénéfice d'un clavier de taille
+                        normale et de puces graphiques et son plus avancées.");
 
             germanTrainingParagraph = new StringSet(@"Der Commodore 64 (kurz
-                        C64, umgangssprachlich 64er oder â€žBrotkastenâ€œ) ist ein
+                        C64, umgangssprachlich 64er oder „Brotkasten“) ist ein
                         8-Bit-Heimcomputer mit 64 KB Arbeitsspeicher. Seit
                         seiner Vorstellung im Januar 1982 auf der Winter
                         Consumer Electronics Show war der von Commodore gebaute
                         C64 Mitte bis Ende der 1980er Jahre sowohl als
-                        Spielcomputer als auch zur Softwareentwicklung Ã¤uÃŸerst
-                        populÃ¤r. Er gilt als der meistverkaufte Heimcomputer
-                        weltweit[1] â€“ SchÃ¤tzungen der Verkaufszahlen bewegen
+                        Spielcomputer als auch zur Softwareentwicklung äußerst
+                        populär. Er gilt als der meistverkaufte Heimcomputer
+                        weltweit[1] – Schätzungen der Verkaufszahlen bewegen
                         sich zwischen 12,5 Mio. und 30 Mio. Exemplaren. Der C64
-                        ermÃ¶glichte mit seiner umfangreichen Hardwareausstattung
-                        zu einem â€“ nach einer teureren EinfÃ¼hrungsphase â€“
+                        ermöglichte mit seiner umfangreichen Hardwareausstattung
+                        zu einem – nach einer teureren Einführungsphase –
                         erschwinglichen Preis in den 1980er-Jahren erstmals
-                        Zugang zu einem fÃ¼r die damalige Zeit leistungsstarken
+                        Zugang zu einem für die damalige Zeit leistungsstarken
                         Computer.");
         }
 
-        [TestMethod, TestCategory("StringSet")]
+        [Fact]
         public void StringSet_IdentifyFrenchLanguage()
         {
             StringSet testLanguage = new StringSet(@"Le Sinclair ZX81 est un
-                        ordinateur personnel 8 bits, conÃ§u par Sinclair Research
-                        et commercialisÃ© par Timex Corporation en mars 1981. Le
-                        boÃ®tier Ã©tait noir avec un clavier Ã  membrane ;
+                        ordinateur personnel 8 bits, conçu par Sinclair Research
+                        et commercialisé par Timex Corporation en mars 1981. Le
+                        boîtier était noir avec un clavier à membrane ;
                         l'apparence distinctive de la machine venait du travail
                         du designer industriel Rick Dickinson");
 
@@ -77,28 +74,28 @@ namespace NGramUnitTests
             double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
             double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
 
-            Assert.IsTrue(distanceFrench < distanceEnglish);
-            Assert.IsTrue(distanceFrench < distanceGerman);
+            Assert.True(distanceFrench < distanceEnglish);
+            Assert.True(distanceFrench < distanceGerman);
         }
 
-        [TestMethod, TestCategory("StringSet")]
+        [Fact]
         public void StringSet_IdentifyGermanLanguage()
         {
             StringSet testLanguage = new StringSet(@"Der Sinclair ZX81 ist ein
                         auf dem Z80-Mikroprozessor basierender Heimcomputer des
                         britischen Herstellers Sinclair Research Ltd. Die Zahl
                         in der Namensgebung bezieht sich auf das Jahr des
-                        Markteintritts am 5. MÃ¤rz 1981.");
+                        Markteintritts am 5. März 1981.");
 
             double distanceEnglish = testLanguage.GetDistance(englishTrainingParagraph);
             double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
             double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
 
-            Assert.IsTrue(distanceGerman < distanceEnglish);
-            Assert.IsTrue(distanceGerman < distanceFrench);
+            Assert.True(distanceGerman < distanceEnglish);
+            Assert.True(distanceGerman < distanceFrench);
         }
 
-        [TestMethod, TestCategory("StringSet")]
+        [Fact]
         public void StringSet_IdentifyEnglishLanguage()
         {
             StringSet testLanguage = new StringSet(@"The ZX81 is a home computer
@@ -114,8 +111,9 @@ namespace NGramUnitTests
             double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
             double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
 
-            Assert.IsTrue(distanceEnglish < distanceFrench);
-            Assert.IsTrue(distanceEnglish < distanceGerman);
+            Assert.True(distanceEnglish < distanceFrench);
+            Assert.True(distanceEnglish < distanceGerman);
         }
+
     }
 }

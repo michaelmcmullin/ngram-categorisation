@@ -1,21 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NGramCategorisation;
+﻿using NGramCategorisation;
 using System;
 using System.Collections.Generic;
+using Xunit;
 
-namespace NGramUnitTests
+namespace NGramXunitTests
 {
-    [TestClass]
     public class EquatableListTests
     {
-        [TestMethod, TestCategory("EquatableList Class")]
+        [Fact]
         public void EquatableListConstructor_String()
         {
             EquatableList<string> ListOfStrings = new EquatableList<string>();
-            Assert.AreEqual(0, ListOfStrings.Count);
+            Assert.Empty(ListOfStrings);
         }
 
-        [TestMethod, TestCategory("EquatableList Class")]
+        [Fact]
         public void EquatableList_CompareEqualLists()
         {
             EquatableList<int> ListOfIntsA = new EquatableList<int>();
@@ -24,7 +23,7 @@ namespace NGramUnitTests
             ListOfIntsA.AddRange(new List<int> { 1, 2, 3, 4, 5 });
             ListOfIntsB.AddRange(new List<int> { 1, 2, 3, 4, 5 });
 
-            Assert.AreEqual(ListOfIntsA, ListOfIntsB);
+            Assert.Equal(ListOfIntsA, ListOfIntsB);
         }
     }
 }
