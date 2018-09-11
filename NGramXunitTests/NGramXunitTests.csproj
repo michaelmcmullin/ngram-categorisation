@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NGramCategorisation\NGramCategorisation.csproj" />
+    <ProjectReference Include="..\NGramCategorisation\NGrammer.csproj" />
   </ItemGroup>
 
 </Project>

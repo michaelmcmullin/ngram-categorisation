@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NGramCategorisation
+namespace NGrammer
 {
     /// <summary>
     /// Represents a strongly typed list that can be accessed by index. It also

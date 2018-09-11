@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NGramCategorisation
+namespace NGrammer
 {
     /// <summary>
     /// An N-Gram is an N-length slice of a longer item. Typically, this will be

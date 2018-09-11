@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NGramCategorisation
+namespace NGrammer
 {
     /// <summary>
     /// Represents a set of N-Grams, including methods for parsing a source

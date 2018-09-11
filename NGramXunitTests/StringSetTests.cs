@@ -1,5 +1,5 @@
-using NGramCategorisation;
-using NGramCategorisation.NGramSets;
+using NGrammer;
+using NGrammer.NGramSets;
 using System;
 using System.Collections.Generic;
 using Xunit;

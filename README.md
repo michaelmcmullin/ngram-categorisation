@@ -1,6 +1,6 @@
-![N-Grammer](https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer.png?raw=true)
+![NGrammer](https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer.png?raw=true)
 
-# N-Grammer
+# NGrammer
 ### Using generic N-Grams to handle data categorisation in C#
 This project was originally inspired by the 1994 paper, *N-Gram-Based Text
 Categorization*, by William B. Cavnar and John M. Trenkle. I created a version
