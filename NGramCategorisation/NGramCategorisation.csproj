@@ -5,12 +5,14 @@
     <Authors>Michael McMullin</Authors>
     <Company />
     <Description>Uses N-Grams to categorise text and other data. Useful for processing human-written content.</Description>
-    <Product>NGram Categorisation</Product>
+    <Product>NGrammer</Product>
     <Copyright>Copyright 2018, Michael McMullin</Copyright>
     <PackageProjectUrl>https://github.com/michaelmcmullin/ngram-categorisation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/michaelmcmullin/ngram-categorisation</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ngram similarity text analysis</PackageTags>
+    <PackageId>NGrammer</PackageId>
+    <PackageIconUrl>https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer-logo128.png?raw=true</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
