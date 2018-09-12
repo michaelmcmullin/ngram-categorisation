@@ -12,6 +12,12 @@ namespace NGrammer.NGramSets
     public class StringSet : INGramSet<string>
     {
         #region Constructors
+        /// <summary>
+        /// Constructor creating a set of NGram&lt;string&gt; objects based
+        /// on a supplied <c>string</c> parameter.
+        /// </summary>
+        /// <param name="source">A <c>string</c> used to generate a set of
+        /// N-Grams from.</param>
         public StringSet(string source)
         {
             NGrams = new List<NGram<string>>();

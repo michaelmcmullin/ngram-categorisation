@@ -8,7 +8,7 @@ namespace NGrammer
     /// a contiguous set of characters in a string (e.g. the word 'hello' would
     /// contain the bigrams 'he', 'el', 'll' and 'lo'). However, this class has
     /// been made generic to open up other possibilities, such as categorising
-    /// sequences of RGB values in a larger image.
+    /// sequences of words or binary data.
     /// </summary>
     /// <typeparam name="T">The type of element in the NGram.</typeparam>
     public class NGram<T> : IComparable<NGram<T>>, IEquatable<NGram<T>> where T : IEquatable<T>
@@ -36,9 +36,6 @@ namespace NGrammer
         /// The number of occurrences of this N-Gram
         /// </summary>
         public int Count { get; set; }
-        #endregion
-
-        #region Operator Overrides
         #endregion
 
         #region Implement Interfaces

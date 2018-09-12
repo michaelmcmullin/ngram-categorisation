@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/michaelmcmullin/ngram-categorisation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/michaelmcmullin/ngram-categorisation</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>ngram similarity text analysis</PackageTags>
+    <PackageTags>ngram similarity text analysis machine learning</PackageTags>
     <PackageId>NGrammer</PackageId>
     <PackageIconUrl>https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer-logo128.png?raw=true</PackageIconUrl>
   </PropertyGroup>
