@@ -1,6 +1,25 @@
 ![NGrammer](https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer.png?raw=true)
 
 # NGrammer
+
+A .NET class library for analysing and categorising data, particularly text,
+by breaking it into n-grams and comparing it against trained examples. In
+other words, give it known examples of different categories you want to identify
+(e.g. sample text in different languages), then run unknown examples against
+it. NGrammer will try and find which of its known categories is the best fit
+for your unknown data.
+
+NGrammer targets .NET Standard 2.0, so it should be compatible with the
+following platforms:
+
+* .NET Core 2.0
+* .NET Framework 4.6.1
+* Mono 5.4
+* Xamarin.iOS 10.14
+* Xamarin.Mac 3.8
+* Xamarin.Android 8.0
+* Universal Windows Platform 10.0.16299
+
 ### Using generic N-Grams to handle data categorisation in C#
 This project was originally inspired by the 1994 paper, *N-Gram-Based Text
 Categorization*, by William B. Cavnar and John M. Trenkle. I created a version
