@@ -13,6 +13,13 @@ namespace NGrammer.NGramSets
     {
         #region Constructors
         /// <summary>
+        /// Default (empty) constructor.
+        /// </summary>
+        public StringSet()
+        {
+        }
+
+        /// <summary>
         /// Constructor creating a set of NGram&lt;string&gt; objects based
         /// on a supplied <c>string</c> parameter.
         /// </summary>
@@ -20,7 +27,6 @@ namespace NGrammer.NGramSets
         /// N-Grams from.</param>
         public StringSet(string source)
         {
-            NGrams = new List<NGram<string>>();
             Parse(source);
         }
         #endregion
@@ -172,6 +178,7 @@ namespace NGrammer.NGramSets
         /// </param>
         public void Parse(string source)
         {
+            NGrams = new List<NGram<string>>();
             Source = source;
             CleanSource();
             for (int i=0; i<Magnitudes.Length; i++)

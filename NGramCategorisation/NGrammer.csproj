@@ -13,6 +13,7 @@
     <PackageTags>ngram similarity text analysis machine learning</PackageTags>
     <PackageId>NGrammer</PackageId>
     <PackageIconUrl>https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer-logo128.png?raw=true</PackageIconUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
