@@ -31,7 +31,7 @@ then use the UI to search for *NGrammer* under the *Browse* link.
 
 ## Quick Start
 Let's see how to train and predict different languages. To see the full code,
-check out (this unit test)[https://github.com/michaelmcmullin/ngram-categorisation/blob/a27530bb61d81db78860447890df0b84bd5b90c3/NGramXunitTests/NGrammerStringSetTests.cs]
+check out [this unit test](https://github.com/michaelmcmullin/ngram-categorisation/blob/a27530bb61d81db78860447890df0b84bd5b90c3/NGramXunitTests/NGrammerStringSetTests.cs)
 (it's pretty much the same as what's here, but the text hasn't been truncated).
 
 ```C#
