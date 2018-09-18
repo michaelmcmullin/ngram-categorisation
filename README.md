@@ -16,34 +16,57 @@ example, instead of comparing character strings within a larger body of text,
 it would be possible to compare image slices within a larger image, or number
 sequences within binary data.
 
-### INGramSet
-This library organises N-Grams into sets, inheriting from `INGramSet<T>`. This
-interface uses generics to accommodate many types of data.
+## Installation
+NGrammer is available on NuGet, so install using your preferred option:
+
+**Package Manager**:  
+`Install-Package NGrammer`
+
+**.NET CLI**:  
+`dotnet add package NGrammer`
+
+**Visual Studio**:  
+Right-click your project, select *Manage NuGet Packages...* (or similar),
+then use the UI to search for *NGrammer* under the *Browse* link.
+
+## Quick Start
+Let's see how to train and predict different languages. To see the full code,
+check out (this unit test)[https://github.com/michaelmcmullin/ngram-categorisation/blob/a27530bb61d81db78860447890df0b84bd5b90c3/NGramXunitTests/NGrammerStringSetTests.cs]
+(it's pretty much the same as what's here, but the text hasn't been truncated).
+
+```C#
+using NGrammer;
+// ...
+var tester = new NGrammer<string, StringSet>();
+
+// Train the tester object so it can recognise different languages.
+// Each training set is given a unique name (e.g. "English"), and some training data.
+tester.AddTrainingSet("English", "[this is supposed to be a few paragraphs written in English]");
+tester.AddTrainingSet("French", "[this is supposed to be a few paragraphs written in French]");
+tester.AddTrainingSet("German", "[this is supposed to be a few paragraphs written in German]");
+
+// Now that tester is trained, let's give it another piece of text, and see
+// if it can predict what language it's written in.
+string unknownLanguage = "[here's another bunch of text, let's say it's French]";
+
+Console.WriteLine(tester.Predict(unknownLanguage));
+// OUTPUT:
+// French
+```
 
 ### StringSet
-As N-Grams are commonly associated with textual data, a `StringSet` class is
-included out of the box. Its usage is straightforward: define a new `StringSet`
-by passing it the text you want to parse. It will automatically generate a range
-of N-Grams, from 1 to 5 in magnitude, and order them starting from the most
-frequent.
+So what is a `StringSet` in the above code? It turns out that `NGrammer` can work
+with any type of data, so long as it implements `IEquatable<T>` (numerics, strings
+and any class that implements it). However, it also needs an implementation of
+`INGramSet<T>`, where `T` is the type you want to work with.
 
-Check out the unit tests for a sample that identifies the language of some text:
+As N-Grams are commonly associated with textual data, a `StringSet` implementation
+is included out of the box. So the first line:
 
-```c#
-    //...
-    StringSet englishTrainingParagraph = new StringSet(@"(a paragraph in English)");
-    StringSet frenchTrainingParagraph = new StringSet(@"(a paragraph in French)");
-    StringSet germanTrainingParagraph = new StringSet(@"(a paragraph in German)");
-    //...
-    StringSet testLanguage = new StringSet(@"(some sample text in French)");
-
-    double distanceEnglish = testLanguage.GetDistance(englishTrainingParagraph);
-    double distanceFrench = testLanguage.GetDistance(frenchTrainingParagraph);
-    double distanceGerman = testLanguage.GetDistance(germanTrainingParagraph);
-    
-    // Lower 'distances' indicate better matches. Therefore, if distanceFrench is
-    // less than distanceEnglish and distanceGerman, then it has been correctly
-    // identified as the best match.
-    Assert.IsTrue(distanceFrench < distanceEnglish);
-    Assert.IsTrue(distanceFrench < distanceGerman);
+```C#
+var tester = new NGrammer<string, StringSet>();
 ```
+...ensures that `tester` works with strings using the `StringSet` class. Check
+out the files `INGramSet.cs`, `NGramSets/StringSet.cs` to see how they work.
+Feel free to implement your own implementation so you can train and predict
+data your own way.

@@ -14,6 +14,7 @@
     <PackageId>NGrammer</PackageId>
     <PackageIconUrl>https://github.com/michaelmcmullin/ngram-categorisation/blob/master/Assets/ngrammer-logo128.png?raw=true</PackageIconUrl>
     <Version>1.1.0</Version>
+    <PackageReleaseNotes>Implements the NGrammer&lt;T,S&gt; class. This greatly simplifies training and prediction. See the project page for examples.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
